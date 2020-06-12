@@ -7,18 +7,18 @@ function BtnComponent(props) {
       {(props.status === 0)?
         <div>
           <button
-          onMouseDown={props.up, props.upResume} onMouseUp={props.stop}>+</button>
+          onMouseDown={() => {props.up()}} onMouseUp={props.stop}>+</button>
           <button className="minus"
-          onMouseDown={props.down, props.downResume} onMouseUp={props.stop}>-</button>
+          onMouseDown={() => {props.down()}} onMouseUp={props.stop}>-</button>
         </div> : ""
       }
 
       {(props.status === 1)?
         <div>
           <button
-          onMouseDown={props.up, props.upResume} onMouseUp={props.stop}>+</button>
+          onMouseDown={() => {props.up()}} onMouseUp={props.stop}>+</button>
           <button className="minus"
-          onMouseDown={props.down, props.downResume} onMouseUp={props.stop}>-</button>
+          onMouseDown={() => {props.down()}} onMouseUp={props.stop}>-</button>
         </div> : ""
       }
 

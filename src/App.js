@@ -10,13 +10,17 @@ function App() {
   const onUp = () => {
     up();
     setStatus(0);
-    setInterv(setInterval(up, 100));
+    setTimeout(function() {
+      setInterv(setInterval(up, 100));
+    }, 2000);
   };
 
   const onDown = () => {
     down();
     setStatus(0);
-    setInterv(setInterval(down, 100));
+    setTimeout(function() {
+      setInterv(setInterval(down, 100));
+    }, 2000);
   }
 
   var updatedMs = time.ms;
@@ -36,13 +40,10 @@ function App() {
     setStatus(1);
   };
 
-  const upResume = () => onUp();
-  const downResume = () => onDown();
-
   return (
     <div>
       <DisplayComponent time={time}/>
-      <BtnComponent status={status} upResume={upResume} downResume={downResume} stop={stop} up={onUp} down={onDown}/>
+      <BtnComponent status={status}  stop={stop} up={onUp} down={onDown}/>
     </div>
 
   );
