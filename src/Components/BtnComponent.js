@@ -7,9 +7,9 @@ function BtnComponent(props) {
     <div>
       <div>
         <button
-        onMouseDown={props.up} onMouseUp={props.stop}>+</button>
+        onMouseDown={props.up} onMouseUp={props.upStop}>+</button>
         <button className="minus"
-        onMouseDown={props.down} onMouseUp={props.stop}>-</button>
+        onMouseDown={props.down} onMouseUp={props.downStop}>-</button>
       </div>
     </div>
   );

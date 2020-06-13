@@ -9,7 +9,7 @@ function App() {
 
   let ch = 0;
 
-  const checkTime = () => {
+  const upCheckTime = () => {
     var start = new Date();
     setSec([...sec, start]);
     console.log("check : " + ch);
@@ -18,6 +18,19 @@ function App() {
         return;
       }else {
         secup();
+      }
+    }
+  }
+
+  const downCheckTime = () => {
+    var start = new Date();
+    setSec([...sec, start]);
+    console.log("check : " + ch);
+    if(ch === 0){
+      if(ch === 1) {
+        return;
+      }else {
+        secdown();
       }
     }
   }
@@ -33,9 +46,14 @@ function App() {
   };
 
   const onDown = () => {
-    down();
-    secdown();
-  }
+    if(ch === 1){
+      setTimeout(function(){
+        clearInterval(interv);
+      }, 2100)
+      down();
+      ch = ch - 1;
+    }
+  };
 
   var updatedMs = time.ms;
 
@@ -61,7 +79,7 @@ function App() {
     }, 2000);
   }
 
-  const stop = () => {
+  const upStop = () => {
     clearInterval(interv);
     var now = new Date();
     console.log("now : " + now);
@@ -83,10 +101,32 @@ function App() {
     }
   };
 
+  const downStop = () => {
+    clearInterval(interv);
+    var now = new Date();
+    console.log("now : " + now);
+
+    var writeDay = new Date(sec[sec.length -1]);
+    console.log("writeDay : " + writeDay);
+
+    var minus;
+    var time = '';
+    if(now.getSeconds() >= writeDay.getSeconds()){
+      minus = now.getSeconds() - writeDay.getSeconds();
+      time += minus;
+    }
+
+    console.log("time : " + time);
+    if(time < 2) {
+      ch = ch + 1;
+      onDown();
+    }
+  };
+
   return (
     <div>
       <DisplayComponent time={time}/>
-      <BtnComponent stop={stop} up={checkTime} down={onDown}/>
+      <BtnComponent upStop={upStop} downStop={downStop} up={upCheckTime} down={downCheckTime}/>
     </div>
 
   );
