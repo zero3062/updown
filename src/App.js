@@ -7,18 +7,14 @@ function App() {
   const [interv, setInterv] = useState();
   const [sec, setSec] = useState([new Date()]);
 
-  let ch = 0;
+  var ch = 0;
 
   const upCheckTime = () => {
     var start = new Date();
     setSec([...sec, start]);
     console.log("check : " + ch);
     if(ch === 0){
-      if(ch === 1) {
-        return;
-      }else {
         secup();
-      }
     }
   }
 
@@ -26,20 +22,14 @@ function App() {
     var start = new Date();
     setSec([...sec, start]);
     console.log("check : " + ch);
-    if(ch === 0){
-      if(ch === 1) {
-        return;
-      }else {
+    if(ch === 1){
         secdown();
-      }
     }
   }
 
   const onUp = () => {
     if(ch === 1){
-      setTimeout(function(){
-        clearInterval(interv);
-      }, 2100)
+      clearInterval(interv);
       up();
       ch = ch - 1;
     }
@@ -47,9 +37,7 @@ function App() {
 
   const onDown = () => {
     if(ch === 1){
-      setTimeout(function(){
-        clearInterval(interv);
-      }, 2100)
+      clearInterval(interv);
       down();
       ch = ch - 1;
     }
@@ -97,6 +85,7 @@ function App() {
     console.log("time : " + time);
     if(time < 2) {
       ch = ch + 1;
+      console.log("stopch : " + ch);
       onUp();
     }
   };
