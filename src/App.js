@@ -22,7 +22,7 @@ function App() {
     var start = new Date();
     setSec([...sec, start]);
     console.log("check : " + ch);
-    if(ch === 1){
+    if(ch === 0){
         secdown();
     }
   }
